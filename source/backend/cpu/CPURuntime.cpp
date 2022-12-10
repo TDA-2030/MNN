@@ -1559,7 +1559,7 @@ void cpuinfo_arm_init(struct cpuinfo_arm_isa* cpuinfo_isa) {
         if ((isa_features & fp16arith_mask) == fp16arith_mask) {
             cpuinfo_isa->fp16arith = true;
         }
-
+#define CPUINFO_ARM_LINUX_FEATURE_I8MM UINT32_C(0x00002000)
         if (isa_features & CPUINFO_ARM_LINUX_FEATURE_I8MM) {
             cpuinfo_isa->i8mm = true;
         }
