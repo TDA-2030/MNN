@@ -71,6 +71,11 @@ int main(int argc, char *argv[])
     const auto poseModel           = argv[1];
     const auto inputImageFileName  = argv[2];
     const auto outputImageFileName = argv[3];
+    int count=1;
+    if(argc >4){
+        count = atoi(argv[4]);
+    }
+    
 #if 0
     std::string model_name = "checkpoints/yolov5s.mnn";
     int num_classes = 80;
@@ -108,7 +113,7 @@ int main(int argc, char *argv[])
     }
 
     MNN::ScheduleConfig config;
-    config.numThread = 4;
+    config.numThread = 8;
     config.type      = static_cast<MNNForwardType>(MNN_FORWARD_CPU);
     MNN::BackendConfig backendConfig;
     backendConfig.precision = (MNN::BackendConfig::PrecisionMode)2;
@@ -179,7 +184,12 @@ int main(int argc, char *argv[])
 #endif
     // run network
     AUTOTIME;
-    net->runSession(session);
+    for (size_t i = 0; i < count; i++)
+    {
+        net->runSession(session);
+    }
+    
+    
 
     // get output data
     std::string output_tensor_name0 = layers[2].name ;
