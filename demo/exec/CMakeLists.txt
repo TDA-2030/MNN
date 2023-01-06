@@ -1,6 +1,8 @@
 message(STATUS "MNN Depends:" ${MNN_DEPS})
 set(MNN_EXEC_DEMOS "")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(pictureRecognition.out ${CMAKE_CURRENT_LIST_DIR}/pictureRecognition.cpp)
 list(APPEND MNN_EXEC_DEMOS pictureRecognition.out)
@@ -35,7 +37,9 @@ list(APPEND MNN_EXEC_DEMOS nluDemo.out)
 
 file(GLOB YOLO_SOURCE_FILES ${CMAKE_CURRENT_LIST_DIR}/mnn-yolov5/src/*.cpp)
 add_executable(yolov5.out ${YOLO_SOURCE_FILES})
-target_include_directories(yolov5.out PRIVATE ${CMAKE_CURRENT_LIST_DIR}/mnn-yolov5/include)
+find_package(OpenCV REQUIRED)
+target_link_libraries(yolov5.out  ${OpenCV_LIBS})
+target_include_directories(yolov5.out PRIVATE ${OpenCV_INCLUDE_DIRS})
 list(APPEND MNN_EXEC_DEMOS yolov5.out)
 
 foreach(TARGET ${MNN_EXEC_DEMOS})

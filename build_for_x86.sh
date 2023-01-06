@@ -19,6 +19,7 @@ cmake .. \
 -DMNN_BUILD_TOOL=ON \
 -DMNN_BUILD_BENCHMARK=ON \
 -DMNN_BUILD_QUANTOOLS=ON \
+-DCMAKE_PREFIX_PATH=/home/zhouli/work/opencv/build_x86
 
 
 make -j8

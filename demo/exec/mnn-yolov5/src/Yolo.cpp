@@ -1,13 +1,13 @@
 
 
-#include "../include/Yolo.h"
+#include "Yolo.h"
 #include <cmath>
 #include <iostream>
 #include <algorithm>
 
 
 std::vector<BoxInfo>
-decode_infer(MNN::Tensor &data, int stride, const yolocv::YoloSize &frame_size, int net_size, int num_classes,
+decode_infer(MNN::Tensor &data, int stride, const yolocv::YoloSize &frame_size, int num_classes,
              const std::vector<yolocv::YoloSize> &anchors, float threshold)
 {
     std::vector<BoxInfo> result;
