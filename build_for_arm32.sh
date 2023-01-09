@@ -16,19 +16,8 @@ cd $BUILD_DIR
 cmake .. \
 -DMNN_BUILD_DEMO=ON \
 -DMNN_BUILD_TOOLS=OFF \
--DCMAKE_SYSTEM_NAME=Linux \
--DCMAKE_SYSTEM_VERSION=1 \
--DCMAKE_SYSTEM_PROCESSOR=arm \
--DCMAKE_C_COMPILER=arm-linux-gnueabihf-gcc \
--DCMAKE_CXX_COMPILER=arm-linux-gnueabihf-g++ \
+-DCMAKE_TOOLCHAIN_FILE=/home/zhouli/work/tools/toolchain-arm32.cmake \
 -DCMAKE_PREFIX_PATH=/home/zhouli/work/opencv/build_arm32
-
-# -DMNN_BUILD_CONVERTER=ON \
-# -DMNN_BUILD_TORCH=ON \
-# -DMNN_BUILD_TOOL=ON \
-# -DMNN_BUILD_BENCHMARK=ON \
-# -DMNN_BUILD_QUANTOOLS=ON \
-
 
 make -j8
 
